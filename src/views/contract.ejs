@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cria novo contrato</title>
+
+  <style>
+    body {
+      font-family: 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    .form_container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #2a2a2a;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2a2a2a;
+    }
+
+    #descricao_avarias {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form_container">
+    <form action="/contract" method="post" id="contractForm">
+      <h2>Dados do Locador</h2>
+      <input type="text" id="locadorNome" name="locadorNome" placeholder="Nome"><br>
+      <input type="text" id="locadorEndereco" name="locadorEndereco" placeholder="Endereço"><br>
+      <input type="tel" id="locadorTelefone" name="locadorTelefone" placeholder="Telefone"><br>
+      <input type="text" id="locadorCNPJCPF" name="locadorCNPJCPF" placeholder="CNPJ/CPF"><br>
+      <h2>Dados do Locatário</h2>
+
+      <input type="text" id="locatario_nome" name="locatarioNome" placeholder="Nome"><br>
+      <input type="text" id="locatario_nome" name="locatarioEmail" placeholder="Email do locatário"><br>
+      <input type="text" id="locatario_endereco" name="locatarioEndereco" placeholder="Endereço"><br>
+      <input type="tel" id="locatario_telefone" name="locatarioTelefone" placeholder="Telefone"><br>
+      <input type="text" id="locatario_cpf_cnpj" name="locatarioCNPJCPF" placeholder="CPF/CNPJ"><br>
+
+      <h2>Dados da Locação</h2>
+      <input type="text" id="marcaVeiculo" name="marcaVeiculo" placeholder="Marca do veículo"><br>
+      <input type="text" id="modeloVeiculo" name="modeloVeiculo" placeholder="Modelo do veículo"><br>
+      <input type="text" id="anoVeiculo" name="anoVeiculo" placeholder="Ano do veículo"><br>
+      <input type="text" id="placaVeiculo" name="placaVeiculo" placeholder="Placa do veículo"><br>
+      <input type="text" id="chassiVeiculo" name="chassiVeiculo" placeholder="Número do Chassi"><br>
+
+      <h2>Período de Locação</h2>
+      <label for="dataInicio">Início:</label><br>
+      <input type="date" id="dataInicio" name="dataInicio"><br>
+      <label for="dataTermino">Término:</label><br>
+      <input type="date" id="dataTermino" name="dataTermino"><br>
+
+      <h2>Valor da Locação</h2>
+      <input type="text" id="valorReais" name="valorReais" placeholder="Valor em Reais"><br>
+      <input type="text" id="valorExtenso" name="valorExtenso" placeholder="Valor por extenso"><br>
+      <input type="text" id="formaPagamento" name="formaPagamento" placeholder="Forma de pagamento"><br>
+
+      <h2>Localidade do Contrato</h2>
+      <input type="text" id="localidadeContrato" name="localidadeContrato" placeholder="Localidade"><br>
+
+      <input type="submit" value="Enviar" id="submitBtn">
+    </form>
+  </div>
+
+  <script>
+    const avariasSim = document.getElementById("avarias_sim");
+    const avariasNao = document.getElementById("avarias_nao");
+    const camposAvarias = document.getElementById("campos_avarias");
+
+    function mostrarCamposAvarias() {
+      camposAvarias.style.display = "block";
+    }
+
+    function ocultarCamposAvarias() {
+      camposAvarias.style.display = "none";
+    }
+
+    avariasSim.addEventListener("click", function (event) {
+      mostrarCamposAvarias();
+    });
+
+    avariasNao.addEventListener("click", function (event) {
+      ocultarCamposAvarias();
+    });
+
+    document.getElementById("submitBtn").addEventListener("click", function (event) {
+      event.preventDefault();
+    });
+  </script>
+</body>
+
+</html>
