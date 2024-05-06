@@ -1,45 +1,61 @@
 'use strict';
-const tableName = 'admin';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
+
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable(tableName, {
+    return queryInterface.createTable('cars', {
       id: {
+
+        type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        autoIncrement: true,
       },
-      nome: {
+
+      // contract_id: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false,
+      //   references: { model: "contracts" },
+      //   key: "id",
+      // },
+
+      marca: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      cpfcnpj: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
-      senha: {
+
+      modelo: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      email: {
+
+      placa: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+
+      numerochassi: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
       },
-      createdAt: {
+
+      created_at: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updatedAt: {
+
+      updated_at: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       }
+
     });
+
   },
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.dropTable(tableName);
+    return queryInterface.dropTable('cars');
   }
 };
